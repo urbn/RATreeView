@@ -56,6 +56,7 @@ typedef enum RATreeViewRowAnimation {
   RATreeViewRowAnimationTop,
   RATreeViewRowAnimationBottom,
   RATreeViewRowAnimationMiddle,
+  RATreeViewRowAnimationFade,
   RATreeViewRowAnimationAutomatic
 } RATreeViewRowAnimation;
 

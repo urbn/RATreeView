@@ -38,6 +38,8 @@
       return UITableViewRowAnimationLeft;
     case RATreeViewRowAnimationMiddle:
       return UITableViewRowAnimationMiddle;
+    case RATreeViewRowAnimationFade:
+      return UITableViewRowAnimationFade;
     case RATreeViewRowAnimationRight:
       return UITableViewRowAnimationRight;
     case RATreeViewRowAnimationTop:
