@@ -84,6 +84,10 @@
 
 - (void)collapseCellForTreeNode:(RATreeNode *)treeNode withRowAnimation:(RATreeViewRowAnimation)rowAnimation
 {
+  if (self.delegate && [self.delegate respondsToSelector:@selector(treeView:willCollapseRowForItem:treeNodeInfo:)]) {
+    [self.delegate treeView:self willCollapseRowForItem:treeNode.item treeNodeInfo:treeNode.treeNodeInfo];
+  }
+
   [self.tableView beginUpdates];
   NSMutableArray *indexes = [NSMutableArray array];
   for (int index = [treeNode startIndex] + 1; index <= [treeNode endIndex]; index++) {
@@ -94,6 +98,10 @@
   UITableViewRowAnimation tableViewRowAnimation = [RATreeView tableViewRowAnimationForTreeViewRowAnimation:rowAnimation];
   [self.tableView deleteRowsAtIndexPaths:indexes withRowAnimation:tableViewRowAnimation];
   [self.tableView endUpdates];
+
+  if (self.delegate && [self.delegate respondsToSelector:@selector(treeView:didCollapseRowForItem:treeNodeInfo:)]) {
+    [self.delegate treeView:self didCollapseRowForItem:treeNode.item treeNodeInfo:treeNode.treeNodeInfo];
+  }
 }
 
 - (void)expandCellForTreeNode:(RATreeNode *)treeNode
@@ -103,6 +111,10 @@
 
 - (void)expandCellForTreeNode:(RATreeNode *)treeNode withRowAnimation:(RATreeViewRowAnimation)rowAnimation
 {
+  if (self.delegate && [self.delegate respondsToSelector:@selector(treeView:willExpandRowForItem:treeNodeInfo:)]) {
+    [self.delegate treeView:self willExpandRowForItem:treeNode.item treeNodeInfo:treeNode.treeNodeInfo];
+  }
+
   [self.tableView beginUpdates];
   [treeNode expand];
   NSMutableArray *indexes = [NSMutableArray array];
@@ -114,6 +126,9 @@
   [self.tableView insertRowsAtIndexPaths:indexes withRowAnimation:tableViewRowAnimation];
   [self.tableView endUpdates];
 
+  if (self.delegate && [self.delegate respondsToSelector:@selector(treeView:didExpandRowForItem:treeNodeInfo:)]) {
+    [self.delegate treeView:self didExpandRowForItem:treeNode.item treeNodeInfo:treeNode.treeNodeInfo];
+  }
 }
 
 @end
