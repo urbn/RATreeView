@@ -137,6 +137,7 @@ typedef enum RATreeViewRowAnimation {
 @property (strong, nonatomic) UIColor *separatorColor;
 @property (nonatomic) CGFloat rowHeight;
 @property (strong, nonatomic) UIView *backgroundView;
+@property (strong, readonly) UITableView *tableView;
 
 //Expanding and Collapsing Rows
 - (void)expandRowForItem:(id)item withRowAnimation:(RATreeViewRowAnimation)animation;
@@ -156,6 +157,8 @@ typedef enum RATreeViewRowAnimation {
 
 // Accessing Cells
 - (UITableViewCell *)cellForItem:(id)item;
+- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point;
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSArray *)visibleCells;
 
 // Scrolling the TreeView

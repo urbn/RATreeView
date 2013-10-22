@@ -258,6 +258,16 @@
   return [self.tableView visibleCells];
 }
 
+- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point
+{
+    return [self.tableView indexPathForRowAtPoint:point];
+}
+
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.tableView cellForRowAtIndexPath:indexPath];
+}
+
 #pragma mark Scrolling the TreeView
 
 - (void)scrollToRowForItem:(id)item atScrollPosition:(RATreeViewScrollPosition)scrollPosition animated:(BOOL)animated
